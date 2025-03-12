@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analytics</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <header>
+        <h1>Data Analytics</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="reviewMotorcycle.html">Review Motorcycle</a></li>
+                <li><a href="analytics.html">Data Analytics</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="analytics-section">
+            <h2>Motorcycle Statistics</h2>
+            <p>
+                Welcome to our Motorcycle Statistics page! Here, you can explore comprehensive insights and trends in the motorcycle industry through a series of interactive charts. These charts provide valuable data on various aspects of high-end motorcycles, helping you gain deeper insights into market dynamics and consumer preferences.
+            </p>
+            <div class="chart-row">
+                <div class="chart-container">
+                    <canvas id="reviewChart"></canvas>
+                    <div class="chart-info">Review Ratings for High-End Motorcycles</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="brandPieChart"></canvas>
+                    <div class="chart-info">Brand Popularity for High-End Motorcycles</div>
+                </div>
+            </div>
+            <div class="chart-row">
+                <div class="chart-container">
+                    <canvas id="engineDisplacementChart"></canvas>
+                    <div class="chart-info">Engine Displacement for High-End Motorcycles</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="priceBarChart"></canvas>
+                    <div class="chart-info">Prices of High-End Motorcycles</div>
+                </div>
+            </div>    
+            <div class="chart-row">
+                <div class="chart-container">
+                    <canvas id="salesLineChart"></canvas>
+                    <div class="chart-info">Monthly Sales of High-End Models</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Motorcycles Enthusiasts</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const colors = {
+                red: 'rgba(255, 99, 132, 0.8)',
+                blue: 'rgba(54, 162, 235, 0.8)',
+                yellow: 'rgba(255, 206, 86, 0.8)',
+                green: 'rgba(75, 192, 192, 0.8)',
+                purple: 'rgba(153, 102, 255, 0.8)'
+            };
+
+            const reviewChartCtx = document.getElementById('reviewChart').getContext('2d');
+            const brandPieChartCtx = document.getElementById('brandPieChart').getContext('2d');
+            const engineDisplacementChartCtx = document.getElementById('engineDisplacementChart').getContext('2d');
+            const priceBarChartCtx = document.getElementById('priceBarChart').getContext('2d');
+            const salesLineChartCtx = document.getElementById('salesLineChart').getContext('2d');
+
+            // Review Chart
+            const reviewChart = new Chart(reviewChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Honda Gold Wing', 'Ducati Panigale V4', 'Yamaha YZF-R1', 'Suzuki GSX-R1000', 'Kawasaki Ninja H2'],
+                    datasets: [{
+                        label: 'Number of Reviews',
+                        data: [50, 40, 45, 30, 35],
+                        backgroundColor: [colors.red, colors.blue, colors.yellow, colors.green, colors.purple],
+                        borderColor: [colors.red, colors.blue, colors.yellow, colors.green, colors.purple],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Brand Pie Chart
+            const brandPieChart = new Chart(brandPieChartCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Honda', 'Ducati', 'Yamaha', 'Suzuki', 'Kawasaki'],
+                    datasets: [{
+                        data: [20, 15, 25, 10, 30],
+                        backgroundColor: [colors.red, colors.blue, colors.yellow, colors.green, colors.purple]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    return `${label}: ${value}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Engine Displacement Chart
+            const engineDisplacementChart = new Chart(engineDisplacementChartCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Honda Gold Wing', 'Ducati Panigale V4', 'Yamaha YZF-R1', 'Suzuki GSX-R1000', 'Kawasaki Ninja H2'],
+                    datasets: [{
+                        data: [1833, 1103, 998, 999, 998],
+                        backgroundColor: [colors.red, colors.blue, colors.yellow, colors.green, colors.purple]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    return `${label}: ${value}cc`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Price Bar Chart
+            const priceBarChart = new Chart(priceBarChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Honda Gold Wing', 'Ducati Panigale V4', 'Yamaha YZF-R1', 'Suzuki GSX-R1000', 'Kawasaki Ninja H2'],
+                    datasets: [{
+                        label: 'Price ($)',
+                        data: [27999, 23495, 17399, 15599, 29000],
+                        backgroundColor: [colors.red, colors.blue, colors.yellow, colors.green, colors.purple],
+                        borderColor: [colors.red, colors.blue, colors.yellow, colors.green, colors.purple],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
+                    }
+                }
+            });
+
+            // Sales Line Chart
+            const salesLineChart = new Chart(salesLineChartCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Honda Gold Wing',
+                        data: [5, 7, 8, 9, 10, 11, 10, 12, 14, 16, 15, 17],
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 2
+                    }, {
+                        label: 'Ducati Panigale V4',
+                        data: [3, 5, 6, 7, 8, 8, 9, 10, 11, 12, 13, 14],
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 2
+                    }, {
+                        label: 'Yamaha YZF-R1',
+                        data: [2, 4, 5, 6, 6, 7, 7, 8, 9, 10, 10, 11],
+                        backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                        borderColor: 'rgba(255, 206, 86, 1)',
+                        borderWidth: 2
+                    }, {
+                        label: 'Suzuki GSX-R1000',
+                        data: [1, 2, 3, 3, 4, 4, 5, 6, 6, 7, 8, 9],
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2
+                    }, {
+                        label: 'Kawasaki Ninja H2',
+                        data: [4, 5, 6, 7, 7, 8, 9, 10, 11, 12, 13, 14],
+                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

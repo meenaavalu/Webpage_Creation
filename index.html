@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorcycles Overview</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-3o5Ke6Gks0ehX7C9zR6/h0mrC/1z7cIl6CE+hqwHZFpL6B32dpzvTEHl7GLG7L/MF6bIC3lP3IjEAFJVrd5pNQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <h1>Motorcycles Enthusiasts</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="reviewMotorcycle.html">Review Motorcycle</a></li>
+                <li><a href="analytics.html">Data Analytics</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="intro-section">
+            <h2>Welcome to the World of Motorcycles</h2>
+            <p>Discover the latest models, read reviews, and delve into the realm of motorcycles. Whether you are a seasoned rider or a motorcycle enthusiast, our site is designed to keep you informed and excited about the latest trends and releases in the motorcycle industry.</p>         
+        </section>
+        <div id="page1" class="page">
+            <div class="video-container">
+                <video autoplay muted loop id="backgroundVideo" aria-label="Background video of a motorcycle">
+                    <source src="motorcycle.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="centered-text">
+                    MOTORCYCLES!!! Feel the Freedom 
+                </div>
+            </div>
+
+        </div>
+        <div class="d-line-separator">
+            <h2 class="text">New Models of the Month</h2>
+            <p>Detailed explanations of the new model motorcycle are included in this section. A direct link to the manufacturer's page for further details is included with every model displayed.</p>
+        </div>
+        <div class="frame-container new-models"> 
+            <div class="d-slider-cards">
+                <div class="body">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="images/Multistrada-V4-S-Grand-Tour-MY23.jpg" alt="Ducati Multistrada V4 S Grand Tour motorcycle" width="400" height="260">
+                                <span class="description">
+                                    <a href="https://www.ducati.com/us/en/bikes/multistrada/multistrada-v4-s-grand-tour" target="_blank">Ducati Multistrada V4 S Grand Tour</a>
+                                </span>
+                                <p>
+                                        The Ducati Multistrada V4 S Grand Tour is designed for long-distance touring with advanced technology and a powerful V4 engine, ensuring both comfort and performance for the rider.
+                                </p>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images/24-Honda-Gold-WingP.jpg" alt="Honda Gold Wing motorcycle" width="400" height="260">
+                                <span class="description">
+                                    <a href="https://powersports.honda.com/motorcycle/touring/gold-wing" target="_blank">Honda Gold Wing</a>
+                                </span>
+                                <p>
+                                        The Honda Gold Wing is a luxurious touring motorcycle known for its smooth ride, powerful engine, and advanced features, making it a favorite for long-distance riders.
+                                </p>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images/24-Honda-Fury_Adventure-Green_RHP.jpg" alt="Honda Fury Adventure Green motorcycle" width="400" height="260">
+                                <span class="description">
+                                    <a href="https://powersports.honda.com/motorcycle/cruiser/fury" target="_blank">Honda Fury Adventure Green</a>
+                                </span>
+                                <p>
+                                        The Honda Fury Adventure Green stands out with its unique styling, custom chopper look, and powerful performance, designed to turn heads wherever it goes.
+                                </p>
+                            </div>
+                        </div>                  
+                        <div class="swiper-scrollbar"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="center-container">
+            <div class="d-line-separator latest-news-separator">
+                <h2 class="text">Latest News</h2>
+            </div>
+            <div class="d-banner-wide">
+                <!--<a href="https://www.ducati.com/us/en/news/ducati-north-america-celebrates-inaugural-dirty-dozen-award-recipients#:~:text=Presented%20by%20CEO%20Jason%20Chinnock,%2C%20on%20April%2016%2C%202024.">-->
+                    <div class="wrapper">
+                        <div class="text">
+                            <h3 class="title">Ducati North America Celebrates Inaugural "Dirty Dozen" Award Recipients</h3>
+                            <p class="description"></p>
+                            <span class="d-link" title="Click here" text-align: center;>
+                                <a href="https://www.ducati.com/us/en/news/ducati-north-america-celebrates-inaugural-dirty-dozen-award-recipients#:~:text=Presented%20by%20CEO%20Jason%20Chinnock,%2C%20on%20April%2016%2C%202024.">
+                                <span>Read More</span>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Motorcycles Enthusiasts</p>
+    </footer>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            scrollbar: {
+                el: '.swiper-scrollbar',
+                hide: true,
+            },
+        });
+    </script>
+</body>
+</html>
